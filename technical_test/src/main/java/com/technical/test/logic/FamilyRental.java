@@ -27,9 +27,9 @@ public class FamilyRental {
 	public Double getCost() {
 		double cost = 0.0;
 		for (Rental rental : this.rentals) {
-			cost += rental.getCost().longValue();
+			cost += rental.getCost().doubleValue();
 		}
-		cost = cost - cost * 0.30;
+		cost -= cost * 0.30;
 
 		return Double.valueOf(cost);
 	}
