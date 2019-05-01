@@ -1,19 +1,29 @@
 package com.technical.test.logic;
 
+import com.technical.test.logic.RentalType;
+
+/**
+ * Clase con lo logica de Rental
+ * @author Jose Julian Prado
+ *
+ */
 public class Rental {
 	
 	/**
-	 * 
+	 * Tipo del Rental
 	 */
 	RentalType type;
 	
 	/**
-	 * 
+	 * Costo del Rental
 	 */
 	Double cost ;
 	
+	/**
+	 * Constructor vacio
+	 */
 	public Rental() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**

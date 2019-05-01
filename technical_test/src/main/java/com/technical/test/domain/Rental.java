@@ -10,7 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * @author ubuntu
+ * Clase de Persistencia para los Rental
+ * @author Jose Julian Prado
  *
  */
 @Entity
@@ -30,7 +31,7 @@ public class Rental implements Serializable {
 	}
 
 	/**
-	 * 
+	 * Id del registro
 	 */
 	@Column(name = "id")
 	private Long id;
@@ -42,13 +43,13 @@ public class Rental implements Serializable {
 	private String type;
 
 	/**
-	 * 
+	 * Tipo de registro (Por hora, dia, semana)
 	 */
 	@Column(name = "charge")
 	private Long charge;
 
 	/**
-	 * 
+	 * Constructor vacio
 	 */
 	public Rental() {
 		this.charge = null;

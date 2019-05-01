@@ -1,5 +1,10 @@
 package com.technical.test.util;
 
+/**
+ * Constantes de la solución
+ * @author Jose Julian Prado
+ *
+ */
 public final class Constant {
 
 	private Constant() {

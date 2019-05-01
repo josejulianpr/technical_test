@@ -23,18 +23,26 @@ import com.technical.test.bus.MessageQueue;
 import com.technical.test.util.Constant;
 
 /**
- * @author ubuntu
+ * Implementación para la cola de mensajes
+ * @author Jose Julian Prado
  * @param <E>
  *
  */
 public class MessageQueueImpl<E extends Serializable> implements MessageQueue<E> {
 
 	/**
-	 * 
+	 * Constructor vacio
 	 */
 	public MessageQueueImpl() {
 	}
 
+	/**
+	 * Método para guardar mensaje en la cola
+	 * 
+	 * @param message
+	 * @throws NamingException
+	 * @throws JMSException
+	 */
 	@Override
 	public void enqueue(E message) throws NamingException, JMSException {
 		Connection connection = null;
@@ -66,6 +74,13 @@ public class MessageQueueImpl<E extends Serializable> implements MessageQueue<E>
 
 	}
 
+	/**
+	 * Método para sacar mensaje de la cola
+	 * 
+	 * @return
+	 * @throws NamingException
+	 * @throws JMSException
+	 */
 	@Override
 	public E dequeue() throws NamingException, JMSException {
 		Connection connection = null;
