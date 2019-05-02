@@ -29,15 +29,15 @@ public class RentalTest {
 	@Test
 	public void testGetCost() {
 		Rental rental = new Rental();
-		rental.setCost(1024.0);
-		assertTrue(rental.getCost().doubleValue()== 1024.0);
+		rental.setCost(60.0);
+		assertTrue(rental.getCost().doubleValue()== 60.0);
 	}
 
 	@Test
 	public void testSetCost() {
 		Rental rental = new Rental();
-		rental.setCost(2048.0);
-		assertTrue(rental.getCost().doubleValue()== 2048.0);
+		rental.setCost(60.0);
+		assertTrue(rental.getCost().doubleValue()== 60.0);
 	}
 
 }
