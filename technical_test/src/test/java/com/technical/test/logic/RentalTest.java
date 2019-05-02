@@ -1,6 +1,6 @@
 package com.technical.test.logic;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -8,27 +8,36 @@ public class RentalTest {
 
 	@Test
 	public void testRental() {
-		assertTrue(true);
+		Rental rental = new Rental();
+		assertTrue(rental instanceof Rental);
 	}
 
 	@Test
 	public void testGetType() {
-		assertTrue(true);
+		Rental rental = new Rental();
+		rental.setType(RentalType.DAY);
+		assertTrue(rental.getType().equals(RentalType.DAY));
 	}
 
 	@Test
 	public void testSetType() {
-		assertTrue(true);
+		Rental rental = new Rental();
+		rental.setType(RentalType.HOUR);
+		assertTrue(rental.getType().equals(RentalType.HOUR));
 	}
 
 	@Test
 	public void testGetCost() {
-		assertTrue(true);
+		Rental rental = new Rental();
+		rental.setCost(1024.0);
+		assertTrue(rental.getCost().doubleValue()== 1024.0);
 	}
 
 	@Test
 	public void testSetCost() {
-		assertTrue(true);
+		Rental rental = new Rental();
+		rental.setCost(2048.0);
+		assertTrue(rental.getCost().doubleValue()== 2048.0);
 	}
 
 }

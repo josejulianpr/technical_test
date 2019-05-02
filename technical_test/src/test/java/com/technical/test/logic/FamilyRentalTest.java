@@ -1,6 +1,6 @@
 package com.technical.test.logic;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -8,7 +8,8 @@ public class FamilyRentalTest {
 
 	@Test
 	public void testFamilyRental() {
-		assertTrue(true);
+		FamilyRental familyRental = new FamilyRental();
+		assertTrue(familyRental instanceof FamilyRental);
 	}
 
 	@Test
