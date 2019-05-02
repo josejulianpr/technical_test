@@ -2,20 +2,22 @@ package com.technical.test.logic;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Clase con lo logica de las FamilyRental
+ * 
  * @author Jose Julian Prado
  *
  */
 public class FamilyRental {
 
 	/**
-	 * Lista de Rental 
+	 * Lista de Rental
 	 */
 	List<Rental> rentals;
 
 	public FamilyRental() {
-		this.rentals = new ArrayList<Rental>();
+		this.rentals = new ArrayList<>();
 	}
 
 	/**

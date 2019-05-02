@@ -5,6 +5,7 @@ package com.technical.test.bus.impl;
 
 import java.io.Serializable;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -24,16 +25,20 @@ import com.technical.test.util.Constant;
 
 /**
  * Implementación para la cola de mensajes
+ * 
  * @author Jose Julian Prado
  * @param <E>
  *
  */
 public class MessageQueueImpl<E extends Serializable> implements MessageQueue<E> {
 
+	private static final Logger LOGGER = Logger.getLogger(MessageQueueImpl.class.getName());
+
 	/**
 	 * Constructor vacio
 	 */
 	public MessageQueueImpl() {
+		// Constructor vacio
 	}
 
 	/**
@@ -45,29 +50,28 @@ public class MessageQueueImpl<E extends Serializable> implements MessageQueue<E>
 	 */
 	@Override
 	public void enqueue(E message) throws NamingException, JMSException {
-		Connection connection = null;
-		try {
-			Context context = getInitialContext();
 
-			ConnectionFactory connectionFactory = (ConnectionFactory) context.lookup("ConnectionFactory");
+		MessageProducer producer = null;
 
-			connection = connectionFactory.createConnection();
+		Context context = getInitialContext();
 
-			Session session = connection.createSession(false, QueueSession.AUTO_ACKNOWLEDGE);
+		ConnectionFactory connectionFactory = (ConnectionFactory) context.lookup("ConnectionFactory");
+		try (Connection connection = connectionFactory.createConnection();
+				Session session = connection.createSession(false, QueueSession.AUTO_ACKNOWLEDGE);) {
 
 			Queue queue = (Queue) context.lookup(Constant.NAME_MQ);
 
 			connection.start();
 
-			MessageProducer producer = session.createProducer(queue);
+			producer = session.createProducer(queue);
 
 			Message mjs = session.createObjectMessage(message);
 
 			producer.send(mjs);
 		} finally {
-			if (connection != null) {
-				System.out.println("close the connection");
-				connection.close();
+			if (producer != null) {
+				LOGGER.info("close the consumer");
+				producer.close();
 			}
 
 		}
@@ -83,29 +87,29 @@ public class MessageQueueImpl<E extends Serializable> implements MessageQueue<E>
 	 */
 	@Override
 	public E dequeue() throws NamingException, JMSException {
-		Connection connection = null;
-		try {
-			Context context = getInitialContext();
 
-			ConnectionFactory connectionFactory = (ConnectionFactory) context.lookup("ConnectionFactory");
+		MessageConsumer consumer = null;
 
-			connection = connectionFactory.createConnection();
+		Context context = getInitialContext();
 
-			Session session = connection.createSession(false, QueueSession.AUTO_ACKNOWLEDGE);
+		ConnectionFactory connectionFactory = (ConnectionFactory) context.lookup("ConnectionFactory");
+		try (Connection connection = connectionFactory.createConnection();
+				Session session = connection.createSession(false, QueueSession.AUTO_ACKNOWLEDGE);) {
 
 			Queue queue = (Queue) context.lookup(Constant.NAME_MQ);
 
 			connection.start();
 
-			MessageConsumer consumer = session.createConsumer(queue);
+			consumer = session.createConsumer(queue);
 
 			Message mjs = consumer.receive();
 			return (E) mjs.getBody(Serializable.class);
 		} finally {
-			if (connection != null) {
-				System.out.println("close the connection");
-				connection.close();
+			if (consumer != null) {
+				LOGGER.info("close the consumer");
+				consumer.close();
 			}
+
 		}
 	}
 
@@ -114,7 +118,6 @@ public class MessageQueueImpl<E extends Serializable> implements MessageQueue<E>
 		props.setProperty("java.naming.factory.initial", "org.jnp.interfaces.NamingContextFactory");
 		props.setProperty("java.naming.factory.url.pkgs", "org.jboss.naming");
 		props.setProperty("java.naming.provider.url", Constant.URL_MQ);
-		Context context = new InitialContext(props);
-		return context;
+		return new InitialContext(props);
 	}
 }
