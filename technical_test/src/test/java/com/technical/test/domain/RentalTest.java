@@ -3,9 +3,13 @@
  */
 package com.technical.test.domain;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+
+import com.technical.test.logic.RentalType;
 
 /**
  * @author ubuntu
@@ -19,7 +23,7 @@ public class RentalTest {
 	 */
 	@Test
 	public void testGetSerialversionuid() {
-		assertTrue(Rental.getSerialversionuid() == 1435579533908664661L);
+		assertEquals(Rental.getSerialversionuid(), 1435579533908664661L);
 	}
 
 	/**
@@ -36,7 +40,9 @@ public class RentalTest {
 	 */
 	@Test
 	public void testGetCharge() {
-		assertTrue(true);
+		Rental rental = new Rental();
+		rental.setCharge(Long.valueOf("5"));
+		assertEquals(rental.getCharge(), Long.valueOf("5"));
 	}
 
 	/**
@@ -44,7 +50,9 @@ public class RentalTest {
 	 */
 	@Test
 	public void testGetId() {
-		assertTrue(true);
+		Rental rental = new Rental();
+		rental.setId(Long.valueOf("1"));
+		assertEquals(rental.getId(), Long.valueOf("1"));
 	}
 
 	/**
@@ -52,7 +60,9 @@ public class RentalTest {
 	 */
 	@Test
 	public void testGetType() {
-		assertTrue(true);
+		Rental rental = new Rental();
+		rental.setType(RentalType.DAY.name());
+		assertTrue(rental.getType().equalsIgnoreCase(RentalType.DAY.name()));
 	}
 
 	/**
@@ -61,7 +71,10 @@ public class RentalTest {
 	 */
 	@Test
 	public void testSetCharge() {
-		assertTrue(true);
+		Rental rental = new Rental();
+		rental.setCharge(Long.valueOf("5"));
+		rental.setCharge(Long.valueOf("20"));
+		assertNotEquals(rental.getCharge(), Long.valueOf("5"));
 	}
 
 	/**
@@ -70,7 +83,10 @@ public class RentalTest {
 	 */
 	@Test
 	public void testSetId() {
-		assertTrue(true);
+		Rental rental = new Rental();
+		rental.setId(Long.valueOf("1"));
+		rental.setId(Long.valueOf("2"));
+		assertNotEquals(rental.getId(), Long.valueOf("1"));
 	}
 
 	/**
@@ -79,7 +95,10 @@ public class RentalTest {
 	 */
 	@Test
 	public void testSetType() {
-		assertTrue(true);
+		Rental rental = new Rental();
+		rental.setType(RentalType.DAY.name());
+		rental.setType(RentalType.HOUR.name());
+		assertFalse(rental.getType().equalsIgnoreCase(RentalType.DAY.name()));
 	}
 
 }

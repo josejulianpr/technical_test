@@ -1,8 +1,10 @@
 package com.technical.test.logic;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class RentalTest {
 
@@ -30,14 +32,15 @@ public class RentalTest {
 	public void testGetCost() {
 		Rental rental = new Rental();
 		rental.setCost(60.0);
-		assertTrue(rental.getCost().doubleValue()== 60.0);
+		assertEquals(rental.getCost() , Double.valueOf(60.0));
 	}
 
 	@Test
 	public void testSetCost() {
 		Rental rental = new Rental();
 		rental.setCost(60.0);
-		assertTrue(rental.getCost().doubleValue()== 60.0);
+		rental.setCost(20.0);
+		assertNotEquals(rental.getCost() , Double.valueOf(60.0));
 	}
 
 }

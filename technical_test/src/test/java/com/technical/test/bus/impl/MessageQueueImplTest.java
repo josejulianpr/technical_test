@@ -3,7 +3,7 @@
  */
 package com.technical.test.bus.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import javax.naming.NamingException;
 

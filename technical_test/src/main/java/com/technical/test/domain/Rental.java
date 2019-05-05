@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 /**
  * Clase de Persistencia para los Rental
+ * 
  * @author Jose Julian Prado
  *
  */

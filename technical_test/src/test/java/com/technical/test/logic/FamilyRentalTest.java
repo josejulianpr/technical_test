@@ -1,6 +1,7 @@
 package com.technical.test.logic;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,8 +58,7 @@ public class FamilyRentalTest {
 		familyRental.getRentals().add(renal1);
 		familyRental.getRentals().add(renal2);
 		familyRental.getRentals().add(renal3);
-
-		assertTrue(familyRental.getCost() == 85.0);
+		assertEquals(familyRental.getCost(), Double.valueOf((85.0 - (85 * 0.30))));
 	}
 
 }
