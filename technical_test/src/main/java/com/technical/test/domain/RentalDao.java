@@ -17,7 +17,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "rental")
-public class Rental implements Serializable {
+public class RentalDao implements Serializable {
 
 	/**
 	 * 
@@ -52,7 +52,7 @@ public class Rental implements Serializable {
 	/**
 	 * Constructor vacio
 	 */
-	public Rental() {
+	public RentalDao() {
 		this.charge = null;
 		this.id = null;
 		this.type = null;

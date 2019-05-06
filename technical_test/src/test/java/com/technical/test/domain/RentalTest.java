@@ -19,59 +19,59 @@ public class RentalTest {
 
 	/**
 	 * Test method for
-	 * {@link com.technical.test.domain.Rental#getSerialversionuid()}.
+	 * {@link com.technical.test.domain.RentalDao#getSerialversionuid()}.
 	 */
 	@Test
 	public void testGetSerialversionuid() {
-		assertEquals(Rental.getSerialversionuid(), 1435579533908664661L);
+		assertEquals(RentalDao.getSerialversionuid(), 1435579533908664661L);
 	}
 
 	/**
-	 * Test method for {@link com.technical.test.domain.Rental#Rental()}.
+	 * Test method for {@link com.technical.test.domain.RentalDao#Rental()}.
 	 */
 	@Test
 	public void testRental() {
-		Rental rental = new Rental();
-		assertTrue(rental instanceof Rental);
+		RentalDao rental = new RentalDao();
+		assertTrue(rental instanceof RentalDao);
 	}
 
 	/**
-	 * Test method for {@link com.technical.test.domain.Rental#getCharge()}.
+	 * Test method for {@link com.technical.test.domain.RentalDao#getCharge()}.
 	 */
 	@Test
 	public void testGetCharge() {
-		Rental rental = new Rental();
+		RentalDao rental = new RentalDao();
 		rental.setCharge(Long.valueOf("5"));
 		assertEquals(rental.getCharge(), Long.valueOf("5"));
 	}
 
 	/**
-	 * Test method for {@link com.technical.test.domain.Rental#getId()}.
+	 * Test method for {@link com.technical.test.domain.RentalDao#getId()}.
 	 */
 	@Test
 	public void testGetId() {
-		Rental rental = new Rental();
+		RentalDao rental = new RentalDao();
 		rental.setId(Long.valueOf("1"));
 		assertEquals(rental.getId(), Long.valueOf("1"));
 	}
 
 	/**
-	 * Test method for {@link com.technical.test.domain.Rental#getType()}.
+	 * Test method for {@link com.technical.test.domain.RentalDao#getType()}.
 	 */
 	@Test
 	public void testGetType() {
-		Rental rental = new Rental();
+		RentalDao rental = new RentalDao();
 		rental.setType(RentalType.DAY.name());
 		assertTrue(rental.getType().equalsIgnoreCase(RentalType.DAY.name()));
 	}
 
 	/**
 	 * Test method for
-	 * {@link com.technical.test.domain.Rental#setCharge(java.lang.Long)}.
+	 * {@link com.technical.test.domain.RentalDao#setCharge(java.lang.Long)}.
 	 */
 	@Test
 	public void testSetCharge() {
-		Rental rental = new Rental();
+		RentalDao rental = new RentalDao();
 		rental.setCharge(Long.valueOf("5"));
 		rental.setCharge(Long.valueOf("20"));
 		assertNotEquals(rental.getCharge(), Long.valueOf("5"));
@@ -79,11 +79,11 @@ public class RentalTest {
 
 	/**
 	 * Test method for
-	 * {@link com.technical.test.domain.Rental#setId(java.lang.Long)}.
+	 * {@link com.technical.test.domain.RentalDao#setId(java.lang.Long)}.
 	 */
 	@Test
 	public void testSetId() {
-		Rental rental = new Rental();
+		RentalDao rental = new RentalDao();
 		rental.setId(Long.valueOf("1"));
 		rental.setId(Long.valueOf("2"));
 		assertNotEquals(rental.getId(), Long.valueOf("1"));
@@ -91,11 +91,11 @@ public class RentalTest {
 
 	/**
 	 * Test method for
-	 * {@link com.technical.test.domain.Rental#setType(java.lang.String)}.
+	 * {@link com.technical.test.domain.RentalDao#setType(java.lang.String)}.
 	 */
 	@Test
 	public void testSetType() {
-		Rental rental = new Rental();
+		RentalDao rental = new RentalDao();
 		rental.setType(RentalType.DAY.name());
 		rental.setType(RentalType.HOUR.name());
 		assertFalse(rental.getType().equalsIgnoreCase(RentalType.DAY.name()));
